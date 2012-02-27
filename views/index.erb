@@ -1,0 +1,48 @@
+<html>
+
+<head>
+<title>Test Input</title>
+<script type="text/javaScript">
+
+       function processFormData() {
+	
+               var left_url;
+               var right_url;
+               left_url = "/google/" + document.getElementById("term").value;
+               right_url = "/bing/" + document.getElementById("term").value;
+
+               var left_frame;
+               var right_frame;
+               left_frame = document.getElementById("left_frame");
+               right_frame = document.getElementById("right_frame");
+
+
+
+               right_frame.src = right_url;
+			   left_frame.src = left_url;
+
+       }
+</script>
+</head>
+
+<body>
+
+<form action="#">
+
+Term: <input type="text" name="term" id="term" />
+
+<input type="button" name="submit" value="Submit"
+onclick="processFormData();" />
+</form>
+
+<table border="1">
+ <tr>
+   <td><iframe id="left_frame" name="left_frame" height="1200"
+width="1000"> </iframe></td>
+   <td><iframe id="right_frame" name="right_frame" height="1200"
+width="1000"> </iframe></td>
+ </tr>
+</table>
+
+</body>
+</html>
