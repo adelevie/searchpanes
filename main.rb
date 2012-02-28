@@ -12,7 +12,7 @@ class App < Sinatra::Base
   end
   
   get "/searchusa/:term" do
-    url = "https://search.usa.gov/search?&query=" + URI.encode(params[:term])
+    url = "https://search.usa.gov/search?&affiliate=fcc&query=" + URI.encode(params[:term])
     open(url).read
   end
 end
