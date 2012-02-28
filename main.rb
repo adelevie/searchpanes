@@ -1,17 +1,19 @@
 require 'open-uri'
+require 'uri'
 
 class App < Sinatra::Base
   get "/" do
     erb :index
   end
   
-  get "/google/:term" do
-    url = "http://google.com/?q=" + params[:term] + "#output=search&q=" + params[:term]
+  get "/fcc/:term" do
+    url = "http://www.fcc.gov/search/results/" + URI.encode(params[:term])
     open(url).read
   end
   
-  get "/bing/:term" do
-    url = "http://bing.com/search?q=" + params[:term] + "&go=&qs=n&form=QBLH&pq=hello&sc=8-5&sp=-1&sk="
+  get "/searchusa/:term" do
+    url = "https://search.usa.gov/search?&query=" + URI.encode(params[:term])
     open(url).read
   end
 end
+
