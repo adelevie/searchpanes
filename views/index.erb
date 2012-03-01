@@ -50,12 +50,16 @@
 		var term;
 		term = getQueryString()["term"];
 		
-		var left_url;
-        var right_url;
-		left_url = "/fcc/" + term;
-        right_url = "/searchusa/" + term;
+		if (term != null) {
+		
+			var left_url;
+	        var right_url;
+			left_url = "/fcc/" + term;
+	        right_url = "/searchusa/" + term;
 
-		loadFrames(left_url, right_url, term);
+			loadFrames(left_url, right_url, term);
+		
+		}
 	}
     
 </script>
