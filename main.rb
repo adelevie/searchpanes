@@ -7,12 +7,12 @@ class App < Sinatra::Base
     erb :index
   end
   
-  def insert_absolute_path(url)
+  def insert_absolute_path(url, base)
     html = open(url).read
     doc = Nokogiri::HTML html
     links = doc.xpath("html/head/link")
     links.each do |link|
-      link.attributes["href"].value = "http://fcc.gov" + link.attributes["href"].value
+      link.attributes["href"].value = base + link.attributes["href"].value
     end
     
     doc
@@ -20,20 +20,14 @@ class App < Sinatra::Base
   
   get "/fcc/:term" do
     url = "http://www.fcc.gov/search/results/" + URI.encode(params[:term])
-    #open(url).read
-    doc = insert_absolute_path url
+    doc = insert_absolute_path(url, "http://fcc.gov")
     doc.to_s
   end
   
   get "/searchusa/:term" do
     url = "https://search.usa.gov/search?&affiliate=fcc&query=" + URI.encode(params[:term])
-    open(url).read
-  end
-  
-  get "/foo" do
-    url = "http://www.fcc.gov/search/results/" + URI.encode(params[:term])
-    #open(url).read
-    doc = insert_absolute_path url
+    doc = insert_absolute_path(url, "https://search.usa.gov")
+    doc.to_s
   end
 end
 

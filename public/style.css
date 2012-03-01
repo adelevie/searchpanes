@@ -7,3 +7,9 @@
 	width: 50%;
     margin: 0px auto;
 }
+
+input#term {
+	width : 45%;
+	height : 5%;
+	font-size : 24px;
+}

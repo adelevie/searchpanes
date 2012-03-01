@@ -7,36 +7,69 @@
 
 <script type="text/javaScript">
 
-       function processFormData() {
+		function getQueryString() {
+		// usage:
+		// var myParam = getQueryString()["myParam"];
+		// from:
+		// http://stackoverflow.com/questions/647259/javascript-query-string
+		  var result = {}, queryString = location.search.substring(1),
+		      re = /([^&=]+)=([^&]*)/g, m;
+
+		  while (m = re.exec(queryString)) {
+		    result[decodeURIComponent(m[1])] = decodeURIComponent(m[2]);
+		  }
+
+		  return result;
+		}
+
+
+
+	  function loadFrames(left_url, right_url, term) {
+          var left_frame;
+          var right_frame;
+
+          left_frame = document.getElementById("left_frame");
+          right_frame = document.getElementById("right_frame");
+
+          right_frame.src = right_url;
+		  left_frame.src = left_url;
+	  }
 	
-               var left_url;
-               var right_url;
-               left_url = "/fcc/" + document.getElementById("term").value;
-               right_url = "/searchusa/" + document.getElementById("term").value;
+	 function processFormData() {
+        var term;
 
-               var left_frame;
-               var right_frame;
-               left_frame = document.getElementById("left_frame");
-               right_frame = document.getElementById("right_frame");
+        //term = getQueryString()["term"];
 
+         left_url = "/fcc/" + term;
+         right_url = "/searchusa/" + term;
 
-
-               right_frame.src = right_url;
-			   left_frame.src = left_url;
-
+		 loadFrames(left_url, right_url, term);
        }
+
+	window.onload = function() {
+		var term;
+		term = getQueryString()["term"];
+		
+		var left_url;
+        var right_url;
+		left_url = "/fcc/" + term;
+        right_url = "/searchusa/" + term;
+
+		loadFrames(left_url, right_url, term);
+	}
+    
 </script>
 </head>
 
 <body>
 
-<form id="form" action="#">
+<form id="form" action="">
 
-Term: <input type="text" name="term" id="term" />
+<h2>Term: <input type="text" name="term" id="term"/>
 
-<input type="button" name="submit" value="Submit"
-onclick="processFormData();" />
+<input type="button" name="submit" value="Submit"/>
 </form>
+</h2>
 
 <table width="100%" height="100%" border="1">
  <tr>
