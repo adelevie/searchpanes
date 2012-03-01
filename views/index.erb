@@ -1,7 +1,10 @@
 <html>
 
 <head>
+<link rel="stylesheet" type="text/css" href="style.css" />
 <title>Test Input</title>
+
+
 <script type="text/javaScript">
 
        function processFormData() {
@@ -27,7 +30,7 @@
 
 <body>
 
-<form action="#">
+<form id="form" action="#">
 
 Term: <input type="text" name="term" id="term" />
 
@@ -35,12 +38,10 @@ Term: <input type="text" name="term" id="term" />
 onclick="processFormData();" />
 </form>
 
-<table border="1">
+<table width="100%" height="100%" border="1">
  <tr>
-   <td><iframe id="left_frame" name="left_frame" height="1200"
-width="1000"> </iframe></td>
-   <td><iframe id="right_frame" name="right_frame" height="1200"
-width="1000"> </iframe></td>
+   <td><iframe class="frame" id="left_frame" name="left_frame"> </iframe></td>
+   <td><iframe class="frame" id="right_frame" name="right_frame"> </iframe></td>
  </tr>
 </table>
 
