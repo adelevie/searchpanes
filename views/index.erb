@@ -22,8 +22,6 @@
 		  return result;
 		}
 
-
-
 	  function loadFrames(left_url, right_url, term) {
           var left_frame;
           var right_frame;
@@ -34,17 +32,6 @@
           right_frame.src = right_url;
 		  left_frame.src = left_url;
 	  }
-	
-	 function processFormData() {
-        var term;
-
-        //term = getQueryString()["term"];
-
-         left_url = "/fcc/" + term;
-         right_url = "/searchusa/" + term;
-
-		 loadFrames(left_url, right_url, term);
-       }
 
 	window.onload = function() {
 		var term;
